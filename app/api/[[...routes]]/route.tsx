@@ -10,7 +10,7 @@ import { abi } from "@/app/lib/abi";
 const app = new Frog({
   basePath: "/api",
   // Supply a Hub API URL to enable frame verification.
-  hubApiUrl: "https://api.hub.wevm.dev",
+  // hubApiUrl: "https://api.hub.wevm.dev",
 });
 
 const ShapesContractAddress = "0x488A5c5f0aA5f44C8438A79E17867b5d30C418b3";
@@ -30,11 +30,9 @@ app.frame("/", (c) => {
 });
 
 app.frame("/view", async (c) => {
-  const { buttonValue, status } = c;
   const randomTokenId = Math.floor(Math.random() * maxSupply) + 1;
 
   const nftMetadata = await getNftMetadata(ShapesContractAddress, randomTokenId);
-
   const nftImageUrl = nftMetadata?.image?.cachedUrl;
 
   return c.res({
@@ -52,7 +50,7 @@ app.frame("/view", async (c) => {
         }}
       >
         <img
-          src={nftImageUrl}
+          src={nftImageUrl || "https://raw.seadn.io/files/c3f075dc479732077f34fe8e957b48e5.svg"}
           style={{
             width: "100%",
             height: "100%",
