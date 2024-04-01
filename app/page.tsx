@@ -33,7 +33,7 @@ export default function Home() {
           OpenSea
         </Link>
         <Link
-          href="https://opensea.io/collection/shapes-45"
+          href="https://warpcast.com/taofeek/0xdc883f2a"
           style={{
             background: "gold",
             padding: "1rem",
