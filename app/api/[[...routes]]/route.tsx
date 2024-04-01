@@ -7,6 +7,8 @@ import { serveStatic } from "frog/serve-static";
 import { getNftMetadata } from "@/app/lib/getNftMetadata";
 import { abi } from "@/app/lib/abi";
 
+
+
 const app = new Frog({
   basePath: "/api",
   // Supply a Hub API URL to enable frame verification.
@@ -14,7 +16,7 @@ const app = new Frog({
 });
 
 const ShapesContractAddress = "0x488A5c5f0aA5f44C8438A79E17867b5d30C418b3";
-const maxSupply = 10;
+let maxSupply = 5;
 
 // Frame to display user's response.
 app.frame("/", (c) => {
@@ -30,9 +32,10 @@ app.frame("/", (c) => {
 });
 
 app.frame("/view", async (c) => {
+ 
   const randomTokenId = Math.floor(Math.random() * maxSupply) + 1;
-
   const nftMetadata = await getNftMetadata(ShapesContractAddress, randomTokenId);
+  maxSupply = nftMetadata.contract.totalSupply;
   const nftImageUrl = nftMetadata?.image?.cachedUrl;
 
   return c.res({
@@ -50,7 +53,7 @@ app.frame("/view", async (c) => {
         }}
       >
         <img
-          src={nftImageUrl || "https://raw.seadn.io/files/c3f075dc479732077f34fe8e957b48e5.svg"}
+          src={nftImageUrl}
           style={{
             width: "100%",
             height: "100%",
