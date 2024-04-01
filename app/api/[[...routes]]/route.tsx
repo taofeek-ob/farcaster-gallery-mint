@@ -35,7 +35,8 @@ app.frame("/view", async (c) => {
 const maxSupply = 5;
 const randomTokenId = Math.floor(Math.random() * maxSupply) + 1;
   const nftMetadata = await getNftMetadata(ShapesContractAddress, randomTokenId);
-  const nftImageUrl = nftMetadata?.image?.cachedUrl;
+
+  const nftImageUrl = nftMetadata?.image?.cachedUrl || "https://raw.seadn.io/files/f6a1358ee4cdc18e97727c22900cbbec.svg";
 
   return c.res({
     image: (
