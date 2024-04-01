@@ -16,7 +16,7 @@ const app = new Frog({
 });
 
 const ShapesContractAddress = "0x488A5c5f0aA5f44C8438A79E17867b5d30C418b3";
-let maxSupply = 5;
+
 
 // Frame to display user's response.
 app.frame("/", (c) => {
@@ -32,10 +32,9 @@ app.frame("/", (c) => {
 });
 
 app.frame("/view", async (c) => {
- 
-  const randomTokenId = Math.floor(Math.random() * maxSupply) + 1;
+const maxSupply = 5;
+const randomTokenId = Math.floor(Math.random() * maxSupply) + 1;
   const nftMetadata = await getNftMetadata(ShapesContractAddress, randomTokenId);
-  maxSupply = nftMetadata.contract.totalSupply;
   const nftImageUrl = nftMetadata?.image?.cachedUrl;
 
   return c.res({
