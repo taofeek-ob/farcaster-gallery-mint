@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const url = process.env.VERCEL_URL || "http://localhost:3000";
+  const url ="https://frame-gallery-dusky.vercel.app";
   const frameMetadata = await getFrameMetadata(`${url}/api`);
   return {
     other: frameMetadata,
