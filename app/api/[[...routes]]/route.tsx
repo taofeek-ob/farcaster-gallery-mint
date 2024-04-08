@@ -58,12 +58,13 @@ const randomTokenId = Math.floor(Math.random() * maxSupply) + 1;
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            transform: "rotate(90deg)",
+            
           }}
         />
       </div>
     ),
     imageOptions: { width: 600, height: 600 },
+    imageAspectRatio:'1:1',
     intents: [
       <Button value="1">More</Button>,
       <Button.Transaction action="/finish" target="/mint">
