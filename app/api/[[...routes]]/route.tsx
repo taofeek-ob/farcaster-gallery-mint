@@ -63,7 +63,7 @@ const randomTokenId = Math.floor(Math.random() * maxSupply) + 1;
         />
       </div>
     ),
-    imageOptions: { width: 600, height: 600 },
+    imageOptions: { width: 800, height: 800 },
     imageAspectRatio:'1:1',
     intents: [
       <Button value="1">More</Button>,
