@@ -22,7 +22,8 @@ const ShapesContractAddress = "0x488A5c5f0aA5f44C8438A79E17867b5d30C418b3";
 app.frame("/", (c) => {
   return c.res({
     image: "https://i.ibb.co/SmM9m2F/New.png",
-    imageOptions: { width: 600, height: 600 },
+    imageOptions: { width: 800, height: 800 },
+    imageAspectRatio:'1:1',
     intents: [
       <Button action="/view" value="1">
         View Collection
